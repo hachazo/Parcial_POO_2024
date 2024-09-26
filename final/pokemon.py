@@ -12,6 +12,9 @@ class Pokemon(ABC):
             self._velocidad = random.randint(0,100)
             self._salvajismo = random.randint(0,100)
 
+    def get_vida(self):
+        return self._vida
+    
     def get_debiliad(self):
         return self._debilidad
     
@@ -24,6 +27,9 @@ class Pokemon(ABC):
     def get_ataque(self):
         return self._ataque
     
+    def set_salvajismo(self, salvajismo):
+        self._salvajismo = salvajismo
+    
     def ataque(self, oponente):
         if self._tipo == oponente.get_debiliad():
             probabilidad = random.randint(1,100)
@@ -33,11 +39,12 @@ class Pokemon(ABC):
         else:
             oponente.defender(self._ataque)
             
+    # def imprimir(self):
+    #     print("Nombre: ", self._nombre)
+    #     #print("Tipo: ", self._tipo)
+    #     print("Ataque: ", self._ataque)
+    #     print("Defensa: ", self._defensa)
+    #     print("Velocidad: ", self._velocidad)
+    #     print("Salvajismo: ", self._salvajismo)
     def imprimir(self):
-        print("Nombre: ", self._nombre)
-        #print("Tipo: ", self._tipo)
-        print("Ataque: ", self._ataque)
-        print("Defensa: ", self._defensa)
-        print("Velocidad: ", self._velocidad)
-        print("Salvajismo: ", self._salvajismo)
-        
+        print(f"Nombre: {self._nombre} Tipo: {self._tipo} Ataque: {self._ataque} Defensa: {self._defensa} Velocidad: {self._velocidad} Salvajismo: {self._salvajismo:.2f}")
